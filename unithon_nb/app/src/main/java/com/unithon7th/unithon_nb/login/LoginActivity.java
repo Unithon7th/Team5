@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,15 +19,18 @@ import com.kakao.util.helper.log.Logger;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
+import com.unithon7th.unithon_nb.AddCookiesInterceptor;
 import com.unithon7th.unithon_nb.ApplicationController;
 import com.unithon7th.unithon_nb.GlobalApplication;
 import com.unithon7th.unithon_nb.R;
+import com.unithon7th.unithon_nb.ReceivedCookiesInterceptor;
 import com.unithon7th.unithon_nb.home.HomeActivity;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,11 +42,14 @@ public class LoginActivity extends Activity {
     private static String OAUTH_CLIENT_ID = "0ncZoX6sxe5LmZtZEB9R";
     private static String OAUTH_CLIENT_SECRET = "xXtCKxrawT";
     private static String OAUTH_CLIENT_NAME = "네이버 아이디로 로그인";
-    Button btnNB;
+    Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        btnLogin = (Button)findViewById(R.id.btnLogin);
+        btnLogin.setPaintFlags(btnLogin.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
@@ -57,6 +64,13 @@ public class LoginActivity extends Activity {
         }catch (NullPointerException e) {
             Log.e("LA_Error : ",e.getMessage());
         }
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(new AddCookiesInterceptor(getApplicationContext()))
+                .addInterceptor(new ReceivedCookiesInterceptor(getApplicationContext())).build();
+
+
+        ((GlobalApplication)getApplication()).setNetworkService(okHttpClient);
     }
 
 //////////////////카카오톡 로그인////////////////////////
@@ -118,6 +132,12 @@ public class LoginActivity extends Activity {
             case R.id.btnNB2:
                 NAuthLogin.startOauthLoginActivity(LoginActivity.this, mOAuthLoginHandler);
                 break;
+            case R.id.btnSignup:
+                //간편 회원가입
+                break;
+            case R.id.btnLogin:
+                //이미 회원인 사람들 로그인
+                break;
         }
     }
 
@@ -125,9 +145,8 @@ public class LoginActivity extends Activity {
     public void requestLogin(final String type){
         Map<String, Object> request = new HashMap<>();
         request.put("type", type);
-        request.put("email", "unithon7th@gmail.com");
-
-        Call<Map<String,Object>> signIn = ((ApplicationController)getApplicationContext()).getNetworkService().signIn(request);
+        request.put("email", "unithon9th@gmail.com");
+        Call<Map<String,Object>> signIn = ((GlobalApplication)getApplicationContext()).getNetworkService().signIn(request);
         signIn.enqueue(new Callback<Map<String, Object>>() {
             @Override
             public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
@@ -135,6 +154,7 @@ public class LoginActivity extends Activity {
                     if((Boolean) response.body().get("success")){
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                     else{
                         Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
@@ -146,7 +166,7 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onFailure(Call<Map<String, Object>> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }

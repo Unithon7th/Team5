@@ -1,8 +1,10 @@
 package com.unithon7th.unithon_nb.login;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.support.constraint.solver.GoalRow;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +19,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.unithon7th.unithon_nb.AddCookiesInterceptor;
 import com.unithon7th.unithon_nb.ApplicationController;
+import com.unithon7th.unithon_nb.GlobalApplication;
 import com.unithon7th.unithon_nb.R;
 import com.unithon7th.unithon_nb.ReceivedCookiesInterceptor;
+import com.unithon7th.unithon_nb.home.HomeActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,8 +35,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     EditText inputName, inputPhoneNumber, inputAuthNumber, inputPassword, confirmPassword;
     Boolean nameFlag, phoneFlag, authFlag, passwordFlag, confirmFlag;
-    TextView btn_auth,btn_authInput,btn_next;
+    TextView btn_auth,btn_authInput,btn_next, btn_back;
     LinearLayout input_authNumber_box, password_container;
+    String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         btn_authInput = findViewById(R.id.btn_authInput);
         btn_auth = findViewById(R.id.btn_auth);
         btn_next = findViewById(R.id.btn_next);
+        btn_back = findViewById(R.id.btn_back);
         input_authNumber_box = findViewById(R.id.input_authNumber_box);
         password_container = findViewById(R.id.password_container);
         btn_authInput.setOnClickListener(this);
@@ -57,13 +63,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         authFlag = false;
         passwordFlag = false;
         confirmFlag = false;
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new AddCookiesInterceptor(getApplicationContext()))
-                .addInterceptor(new ReceivedCookiesInterceptor(getApplicationContext())).build();
 
-
-        ((ApplicationController)getApplication()).setNetworkService(okHttpClient);
-
+        type = getIntent().getStringExtra("type");
         inputName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -225,7 +226,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             if(authFlag){
                 Map<String, String> request = new HashMap<>();
                 request.put("verify_number",inputAuthNumber.getText().toString());
-                Call<Map<String, Object>> postAuthcode = ((ApplicationController)getApplicationContext()).getNetworkService().postAuthCode(request);
+                Call<Map<String, Object>> postAuthcode = ((GlobalApplication)getApplicationContext()).getNetworkService().postAuthCode(request);
                 postAuthcode.enqueue(new Callback<Map<String, Object>>() {
                     @Override
                     public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
@@ -248,19 +249,31 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         else if(v == btn_next){
             if(inputPassword.getText().toString().compareTo(confirmPassword.getText().toString()) == 0){
                 Map<String, Object> request = new HashMap<>();
-                request.put("type", getIntent().getStringExtra("type"));
-                request.put("cell_no", inputPhoneNumber.getText().toString());
-                request.put("pw", inputPassword.getText().toString());
-                request.put("name", inputName.getText().toString());
 
-                Call<Map<String, Object>> response = ((ApplicationController)getApplicationContext()).getNetworkService().signUp(request);
+                if(type.compareTo("general") == 0){
+                    request.put("type", getIntent().getStringExtra("type"));
+                    request.put("cell_no", inputPhoneNumber.getText().toString());
+                    request.put("pw", inputPassword.getText().toString());
+                    request.put("name", inputName.getText().toString());
+                }else{
+                    request.put("type", getIntent().getStringExtra("type"));
+                    request.put("cell_no", inputPhoneNumber.getText().toString());
+                    request.put("email", "unithon9th@gmail.com");
+                    request.put("name", inputName.getText().toString());
+                }
+
+
+                Call<Map<String, Object>> response = ((GlobalApplication)getApplicationContext()).getNetworkService().signUp(request);
                 response.enqueue(new Callback<Map<String, Object>>() {
                     @Override
                     public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
                         if(response.isSuccessful()){
 
                             if((Boolean) response.body().get("success")){
-                                Log.d("success","success");
+                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
                             }
                         }
 
@@ -273,5 +286,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 });
             }
         }
+
+        if(v == btn_back){
+            onBackPressed();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

@@ -20,6 +20,7 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/btn_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -147,6 +148,7 @@
                     android:layout_marginStart="20dp"
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
+                    android:inputType="numberDecimal"
                     android:hint="인증번호 여섯자리 입력"
                     android:layout_centerVertical="true"
                     android:textSize="13sp"

@@ -21,10 +21,15 @@ import com.unithon7th.unithon_nb.login.LoginActivity;
 
 import java.util.Map;
 
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class GlobalApplication extends Application {
     private static volatile GlobalApplication instance = null;
     private static OAuthLogin NAuthLogin;
     private Context context;
+    private NetworkService networkService;
 
     //////////////////////////카카오톡 로그인/////////////////////////////////////////
     public static GlobalApplication getGlobalApplicationContext(){
@@ -80,5 +85,18 @@ public class GlobalApplication extends Application {
         instance = this;
         KakaoSDK.init(new KakaoSDKAdapter());
 
+    }
+
+    public void setNetworkService(OkHttpClient client){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://nb.ljh.app/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        networkService = retrofit.create(NetworkService.class);
+    }
+
+    public NetworkService getNetworkService(){
+        return networkService;
     }
 }

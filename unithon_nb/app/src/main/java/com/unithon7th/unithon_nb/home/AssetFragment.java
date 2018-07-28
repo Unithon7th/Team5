@@ -24,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AssetFragment extends Fragment implements View.OnClickListener{
+public class AssetFragment extends Fragment{
     View view;
 
     @Nullable
@@ -41,13 +41,7 @@ public class AssetFragment extends Fragment implements View.OnClickListener{
         }
         */
         view = inflater.inflate(R.layout.fragment_asset,container,false);
-
-        view.findViewById(R.id.btn_login).setOnClickListener(this);
         return view;
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }

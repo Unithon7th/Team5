@@ -70,12 +70,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new AddCookiesInterceptor(getApplicationContext()))
-                .addInterceptor(new ReceivedCookiesInterceptor(getApplicationContext())).build();
-
-
-        ((ApplicationController)getApplication()).setNetworkService(okHttpClient);
     }
 
     @Override
