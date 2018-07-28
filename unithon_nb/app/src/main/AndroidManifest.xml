@@ -22,9 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".asset.assetRegister">
+
+        </activity>
         <activity android:name=".login.SignUpActivity" />
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".home.HomeActivity"/>
+
         <meta-data
             android:name="com.kakao.sdk.ClientSecret"
             android:value="yxdW0FL7paRkJQ04MrDxarZOGwhyethZ" />
