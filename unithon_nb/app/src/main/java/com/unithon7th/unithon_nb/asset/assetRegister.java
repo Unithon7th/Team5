@@ -1,15 +1,15 @@
 package com.unithon7th.unithon_nb.asset;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.unithon7th.unithon_nb.R;
 
-public class AssetRegisterActivity extends AppCompatActivity {
+public class assetRegister extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_asset_regist);
+        setContentView(R.layout.activity_asset_register_main);
     }
 }
