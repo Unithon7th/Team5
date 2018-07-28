@@ -87,8 +87,14 @@
                         android:textSize="15sp" />
                 </LinearLayout>
             </LinearLayout>
-
             <include layout="@layout/component_line" />
+            <LinearLayout
+                android:id="@+id/select_item_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+            </LinearLayout>
 
         </LinearLayout>
 
