@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,11 +32,14 @@ public class LoginActivity extends Activity {
     private static String OAUTH_CLIENT_ID = "0ncZoX6sxe5LmZtZEB9R";
     private static String OAUTH_CLIENT_SECRET = "xXtCKxrawT";
     private static String OAUTH_CLIENT_NAME = "네이버 아이디로 로그인";
-    Button btnNB;
+    Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        btnLogin = (Button)findViewById(R.id.btnLogin);
+        btnLogin.setPaintFlags(btnLogin.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
@@ -114,6 +118,10 @@ public class LoginActivity extends Activity {
                 NAuthLogin.startOauthLoginActivity(LoginActivity.this, mOAuthLoginHandler);
                 break;
             case R.id.btnSignup:
+                //간편 회원가입
+                break;
+            case R.id.btnLogin:
+                //이미 회원인 사람들 로그인
                 break;
         }
     }

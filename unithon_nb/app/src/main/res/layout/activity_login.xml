@@ -12,6 +12,14 @@
         android:layout_height="match_parent"
         android:background="@drawable/login_image">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_above="@+id/btnKT"/>
+
     <com.kakao.usermgmt.LoginButton
         android:id="@+id/btnKT"
         android:layout_width="300dp"
@@ -50,6 +58,7 @@
             android:text="간편 회원가입" />
 
         <TextView
+            android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
@@ -57,6 +66,18 @@
             android:layout_below="@+id/btnSignup"
             android:layout_marginTop="45dp"
             android:text="이미 회원이신가요?"/>
-        
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:background="#00ff0000"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/btnSignup"
+            android:layout_toRightOf="@+id/message"
+            android:onClick="btnOnClick"
+            android:layout_alignBaseline="@+id/message"
+            android:text="로그인"/>
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
