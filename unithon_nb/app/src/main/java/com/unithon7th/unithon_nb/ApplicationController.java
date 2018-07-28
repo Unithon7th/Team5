@@ -7,7 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApplicationController  extends Application{
     private NetworkService networkService;
-
     @Override
     public void onCreate() {
         super.onCreate();

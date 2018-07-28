@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name=".GlobalApplication"
+        android:name=".ApplicationController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,20 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".login.SignUpActivity"></activity>
-        <meta-data
-            android:name="com.kakao.sdk.ClientSecret"
-            android:value="yxdW0FL7paRkJQ04MrDxarZOGwhyethZ"/>
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="15a4532a090012ec486654d34aab7d32"/>
     </application>
 
 </manifest>
