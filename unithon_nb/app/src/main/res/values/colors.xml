@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="bg_gray">#fbfbfb</color>
     <color name="bg_line">#e7e7e7</color>
+    <color name="text_black">#2d2d2d</color>
+    <color name="text_gray">#b3b3b3</color>
+    <color name="text_complete">#1378c3</color>
 </resources>

@@ -21,18 +21,15 @@
                 android:layout_gravity="center"
                 android:src="@drawable/arrow_back" />
         </FrameLayout>
-        <TextView
 
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="자산 등록하기" />
     </FrameLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/bg_line" />
+    <include layout="@layout/component_line" />
 
     <include layout="@layout/content_asset_nothing" />
 </LinearLayout>
