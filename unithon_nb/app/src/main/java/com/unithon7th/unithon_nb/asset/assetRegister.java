@@ -3,14 +3,17 @@ package com.unithon7th.unithon_nb.asset;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.unithon7th.unithon_nb.AgriculturalRegisterFragment;
+import com.unithon7th.unithon_nb.Agriculture;
+import com.unithon7th.unithon_nb.LiveStock;
 import com.unithon7th.unithon_nb.LivestockRegisterFragment;
 import com.unithon7th.unithon_nb.R;
 import com.unithon7th.unithon_nb.RegisterFragment;
 
 
-public class assetRegister extends AppCompatActivity implements RegisterFragment.OnFragmentRegisterListener{
+public class AssetRegister extends AppCompatActivity implements RegisterFragment.OnFragmentRegisterListener, AgriculturalRegisterFragment.OnFragmentInteractionListener, LivestockRegisterFragment.OnFragmentInteractionListener {
 
     static final int ADD_ARGU = 1;
     static final int ADD_LIVESTOCK = 2;
@@ -47,6 +50,16 @@ public class assetRegister extends AppCompatActivity implements RegisterFragment
 
         }
 
+
+    }
+
+    @Override
+    public void onFragmentInteraction(LiveStock liveStock) {
+        
+    }
+
+    @Override
+    public void onFragmentInteraction(Agriculture agriculture) {
 
     }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/whatkind"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:text="소"
+            android:textColor="@color/text_complete" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:lineSpacingExtra="14sp"
+            android:textColor="#1378c3"
+            android:textSize="12sp"
+            tools:text="보유 마리 수" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:lineSpacingExtra="0sp"
+            android:textColor="#1378c3"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="38 마리" />
+    </LinearLayout>
+</LinearLayout>
