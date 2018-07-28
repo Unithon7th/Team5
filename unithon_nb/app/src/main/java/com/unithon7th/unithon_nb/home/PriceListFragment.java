@@ -15,6 +15,17 @@ public class PriceListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        /*
+        int resid;
+        if(아이템이 0이면){
+            resid = R.layout.fragment_home_none;
+        }
+
+        else{
+            resid = R.layout.fragment_asset;
+        }
+        */
+
         view = inflater.inflate(R.layout.fragment_pricelist,container,false);
         return view;
     }

@@ -16,10 +16,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.unithon7th.unithon_nb.AddCookiesInterceptor;
+import com.unithon7th.unithon_nb.ApplicationController;
 import com.unithon7th.unithon_nb.R;
+import com.unithon7th.unithon_nb.ReceivedCookiesInterceptor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     ViewPager viewPager;
@@ -64,6 +69,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(new AddCookiesInterceptor(getApplicationContext()))
+                .addInterceptor(new ReceivedCookiesInterceptor(getApplicationContext())).build();
+
+
+        ((ApplicationController)getApplication()).setNetworkService(okHttpClient);
     }
 
     @Override
