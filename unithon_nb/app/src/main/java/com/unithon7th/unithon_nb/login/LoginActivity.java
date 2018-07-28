@@ -128,7 +128,9 @@ public class LoginActivity extends Activity {
                 NAuthLogin.startOauthLoginActivity(LoginActivity.this, mOAuthLoginHandler);
                 break;
             case R.id.btnSignup:
-                //간편 회원가입
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                intent.putExtra("type","general");
+                startActivity(intent);
                 break;
             case R.id.btnLogin:
                 //이미 회원인 사람들 로그인

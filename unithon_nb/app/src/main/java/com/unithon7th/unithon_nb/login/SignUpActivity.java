@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,7 +32,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     EditText inputName, inputPhoneNumber, inputAuthNumber, inputPassword, confirmPassword;
     Boolean nameFlag, phoneFlag, authFlag, passwordFlag, confirmFlag;
-    TextView btn_auth,btn_authInput,btn_next, btn_back;
+    TextView btn_auth,btn_authInput,btn_next;
+    ImageView btn_back;
     LinearLayout input_authNumber_box, password_container;
     String type;
     @Override
@@ -53,6 +55,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         btn_authInput.setOnClickListener(this);
         btn_auth.setOnClickListener(this);
         btn_next.setOnClickListener(this);
+        btn_back.setOnClickListener(this);
         getPhoneNumber();
 
         nameFlag = false;

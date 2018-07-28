@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,12 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".asset.assetRegister">
-
-        </activity>
+        <activity android:name=".asset.AssetRegister" />
         <activity android:name=".login.SignUpActivity" />
-        <activity android:name=".login.LoginActivity"/>
-        <activity android:name=".home.HomeActivity"/>
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".home.HomeActivity" />
 
         <meta-data
             android:name="com.kakao.sdk.ClientSecret"
@@ -36,6 +34,8 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="15a4532a090012ec486654d34aab7d32" />
 
+        <activity android:name=".SetUpActivity" />
+        <activity android:name=".ScrapActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.unithon7th.unithon_nb.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,23 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.unithon7th.unithon_nb.R;
+import com.unithon7th.unithon_nb.asset.AssetRegister;
 
-public class PriceListFragment extends Fragment {
+public class PriceListFragment extends Fragment{
     View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        /*
-        int resid;
-        if(아이템이 0이면){
-            resid = R.layout.fragment_home_none;
-        }
-
-        else{
-            resid = R.layout.fragment_asset;
-        }
-        */
-
         view = inflater.inflate(R.layout.fragment_pricelist,container,false);
         return view;
     }

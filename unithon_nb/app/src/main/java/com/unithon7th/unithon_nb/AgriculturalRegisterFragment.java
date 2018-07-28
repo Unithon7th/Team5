@@ -1,5 +1,6 @@
 package com.unithon7th.unithon_nb;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,8 @@ import com.bigkoo.pickerview.MyOptionsPickerView;
 
 import java.util.ArrayList;
 
+import static android.app.Activity.RESULT_OK;
+
 
 public class AgriculturalRegisterFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
@@ -24,7 +27,7 @@ public class AgriculturalRegisterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    OnFragmentInteractionListener addAgriculturalListener;
+    OnFragmentAddListener addAgriculturalListener;
 
     public AgriculturalRegisterFragment() {
     }
@@ -119,7 +122,10 @@ public class AgriculturalRegisterFragment extends Fragment {
         add_complete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addAgriculturalListener.onFragmentInteraction(Agriculture.getInstance());
+                Intent intent = new Intent();
+                intent.putExtra("complete",true);
+                getActivity().setResult(RESULT_OK);
+                getActivity().finish();
             }
         });
         return view;
@@ -208,7 +214,7 @@ public class AgriculturalRegisterFragment extends Fragment {
     }
 
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Agriculture agriculture);
+    public interface OnFragmentAddListener {
+        void onbbb(int agriculture);
     }
 }

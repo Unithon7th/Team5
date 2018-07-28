@@ -24,7 +24,7 @@ public class LivestockRegisterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener addLiveStockListener;
+    private OnFragmentAdd2Listener addLiveStockListener;
 
     public LivestockRegisterFragment() {
     }
@@ -100,7 +100,7 @@ public class LivestockRegisterFragment extends Fragment {
         add_complete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addLiveStockListener.onFragmentInteraction(LiveStock.getInstance());
+                addLiveStockListener.onFragmentInteraction(2);
             }
         });
         return view;
@@ -173,7 +173,7 @@ public class LivestockRegisterFragment extends Fragment {
 //        mListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(LiveStock liveStock);
+    public interface OnFragmentAdd2Listener {
+        void onFragmentInteraction(int i);
     }
 }

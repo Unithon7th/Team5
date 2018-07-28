@@ -12,6 +12,7 @@ import com.unithon7th.unithon_nb.R;
 
 public class IssueFragment extends Fragment {
     View view;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
