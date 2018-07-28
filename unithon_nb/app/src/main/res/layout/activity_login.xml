@@ -6,4 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".login.LoginActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.kakao.usermgmt.LoginButton
+        android:id="@+id/com_kakao_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+        <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+            android:id="@+id/btnNB"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/com_kakao_login"
+            android:layout_marginTop="30dp"
+            android:layout_height="50dp" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
