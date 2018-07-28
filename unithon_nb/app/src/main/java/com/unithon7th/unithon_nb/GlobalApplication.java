@@ -1,7 +1,12 @@
 package com.unithon7th.unithon_nb;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.provider.SyncStateContract;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.kakao.auth.ApprovalType;
 import com.kakao.auth.AuthType;
@@ -9,10 +14,19 @@ import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
+import com.nhn.android.naverlogin.OAuthLogin;
+import com.nhn.android.naverlogin.OAuthLoginHandler;
+import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
+import com.unithon7th.unithon_nb.login.LoginActivity;
+
+import java.util.Map;
 
 public class GlobalApplication extends Application {
     private static volatile GlobalApplication instance = null;
+    private static OAuthLogin NAuthLogin;
+    private Context context;
 
+    //////////////////////////카카오톡 로그인/////////////////////////////////////////
     public static GlobalApplication getGlobalApplicationContext(){
         if(instance==null)
             throw new IllegalStateException("error");
@@ -65,7 +79,6 @@ public class GlobalApplication extends Application {
         super.onCreate();
         instance = this;
         KakaoSDK.init(new KakaoSDKAdapter());
+
     }
-
-
 }

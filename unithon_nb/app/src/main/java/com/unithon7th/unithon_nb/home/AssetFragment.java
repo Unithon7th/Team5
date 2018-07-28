@@ -48,34 +48,6 @@ public class AssetFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Map<String, Object> request = new HashMap<>();
-        request.put("type", "general");
-        request.put("cell_no", "010-2958-3242");
-        request.put("pw", "ㅎㅎㅎ");
-        request.put("name", "ㅎㅎㅎ");
 
-         Call<Map<String, Object>> response = ((ApplicationController)getActivity().getApplicationContext()).getNetworkService().signUp(request);
-         response.enqueue(new Callback<Map<String, Object>>() {
-             @Override
-             public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
-                 if(response.isSuccessful()){
-
-                     if((Boolean) response.body().get("success")){
-
-                         LinkedTreeMap<String, String> session = (LinkedTreeMap<String, String>) response.body().get("session");
-                         String string = session.get("name") + session.get("cell_no") + session.get("id");
-
-                         Toast.makeText(getActivity().getApplicationContext(), string, Toast.LENGTH_SHORT).show();
-                     }
-                     Log.d("success","success");
-                 }
-
-             }
-
-             @Override
-             public void onFailure(Call<Map<String, Object>> call, Throwable t) {
-                t.printStackTrace();
-             }
-         });
     }
 }

@@ -20,4 +20,7 @@ public interface NetworkService {
 
     @GET("assets/reg/list/")
     Call<Map<String, Object>> getAssetList(@Body Map<String, Object> request);
+
+    @POST("user/verify_sms/4ad2e311-2569-4fef-9553-0395533f3d91/")
+    Call<Map<String,Object>> postAuthCode(@Body Map<String,String> request);
 }

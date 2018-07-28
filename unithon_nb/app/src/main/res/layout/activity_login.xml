@@ -11,17 +11,20 @@
         android:layout_height="match_parent">
 
     <com.kakao.usermgmt.LoginButton
-        android:id="@+id/com_kakao_login"
+        android:id="@+id/btnKT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
 
-        <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-            android:id="@+id/btnNB"
+        <Button
+            android:id="@+id/btnNB2"
             android:layout_width="wrap_content"
-            android:layout_below="@+id/com_kakao_login"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnKT"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:layout_height="50dp" />
+            android:onClick="btnOnClick"
+            android:text="네이버 로그인"/>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
