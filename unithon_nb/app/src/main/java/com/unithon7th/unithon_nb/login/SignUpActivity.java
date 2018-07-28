@@ -1,7 +1,6 @@
 package com.unithon7th.unithon_nb.login;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -13,13 +12,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.gson.internal.LinkedTreeMap;
 import com.unithon7th.unithon_nb.AddCookiesInterceptor;
 import com.unithon7th.unithon_nb.ApplicationController;
 import com.unithon7th.unithon_nb.R;
@@ -27,7 +22,6 @@ import com.unithon7th.unithon_nb.ReceivedCookiesInterceptor;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -254,7 +248,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         else if(v == btn_next){
             if(inputPassword.getText().toString().compareTo(confirmPassword.getText().toString()) == 0){
                 Map<String, Object> request = new HashMap<>();
-                request.put("type", "general");
+                request.put("type", getIntent().getStringExtra("type"));
                 request.put("cell_no", inputPhoneNumber.getText().toString());
                 request.put("pw", inputPassword.getText().toString());
                 request.put("name", inputName.getText().toString());

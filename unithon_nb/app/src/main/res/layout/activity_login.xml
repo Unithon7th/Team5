@@ -19,12 +19,16 @@
 
         <Button
             android:id="@+id/btnNB2"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnKT"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:textColor="#ffffff"
+            android:background="#00c73c"
             android:onClick="btnOnClick"
             android:text="네이버 로그인"/>
+
+        
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

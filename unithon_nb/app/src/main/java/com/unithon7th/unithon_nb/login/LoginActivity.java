@@ -18,11 +18,18 @@ import com.kakao.util.helper.log.Logger;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
+import com.unithon7th.unithon_nb.ApplicationController;
 import com.unithon7th.unithon_nb.GlobalApplication;
 import com.unithon7th.unithon_nb.R;
+import com.unithon7th.unithon_nb.home.HomeActivity;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends Activity {
     private SessionCallback callback;
@@ -72,8 +79,7 @@ public class LoginActivity extends Activity {
 
         @Override
         public void onSessionOpened() {
-            Intent intent = new Intent(getBaseContext(), SignUpActivity.class);
-            startActivity(intent);
+            requestLogin("kakao");
         }
 
         @Override
@@ -98,8 +104,7 @@ public class LoginActivity extends Activity {
                 String tokenType = NAuthLogin.getTokenType(context);
                 Log.e("LA_accessToken",accessToken.toString());
                 Log.e("LA_refreshToken",refreshToken.toString());
-                Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
-                startActivity(intent);
+                requestLogin("naver");
             } else {
                 String errorCode = NAuthLogin.getLastErrorCode(context).getCode();
                 String errorDesc = NAuthLogin.getLastErrorDesc(context);
@@ -115,5 +120,36 @@ public class LoginActivity extends Activity {
                 break;
         }
     }
+
+
+    public void requestLogin(final String type){
+        Map<String, Object> request = new HashMap<>();
+        request.put("type", type);
+        request.put("email", "unithon7th@gmail.com");
+
+        Call<Map<String,Object>> signIn = ((ApplicationController)getApplicationContext()).getNetworkService().signIn(request);
+        signIn.enqueue(new Callback<Map<String, Object>>() {
+            @Override
+            public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
+                if(response.isSuccessful()){
+                    if((Boolean) response.body().get("success")){
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                        intent.putExtra("type",type);
+                        startActivity(intent);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Map<String, Object>> call, Throwable t) {
+
+            }
+        });
+    }
+
 }
 
