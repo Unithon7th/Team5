@@ -21,7 +21,6 @@ public class Agriculture {
         detailKind = "";
         CurrentAgriculturing = "";
         howmanyArg = "";
-
         unit = "";
     }
 

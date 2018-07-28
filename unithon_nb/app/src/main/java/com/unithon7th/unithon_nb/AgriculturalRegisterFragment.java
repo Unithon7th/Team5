@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +26,18 @@ public class AgriculturalRegisterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    OnFragmentAddListener addAgriculturalListener;
+    OnFragmentInteractionListener addAgriculturalListener;
 
     public AgriculturalRegisterFragment() {
+    }
+
+    public static AgriculturalRegisterFragment newInstance(String param1, String param2) {
+        AgriculturalRegisterFragment fragment = new AgriculturalRegisterFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -46,7 +54,6 @@ public class AgriculturalRegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_agricultural_register, container, false);
 
-        ImageView add_complete_btn = view.findViewById(R.id.iv_complete_register_agricultural);
 
         View selectMiniLayout = view.findViewById(R.id.select_mini_classification);
 
@@ -87,51 +94,48 @@ public class AgriculturalRegisterFragment extends Fragment {
         selectMiniLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singlePicker(farmingKindNameLayout, "whatkind");
+                singlePicker(farmingKindNameLayout);
             }
         });
 
         farmingKindNameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singlePicker(currentConditionLayout, "detailkind");
+                singlePicker(currentConditionLayout);
             }
         });
 
         currentConditionLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singlePicker(currentConditionGroundLayout, "isCurrent");
+                singlePicker(currentConditionGroundLayout);
             }
         });
 
         currentConditionGroundLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singlePicker(currentFarmingCountLayout, "howmanyground");
+                singlePicker(currentFarmingCountLayout);
             }
         });
 
         currentFarmingCountLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singlePicker("unit");
-            }
-        });
-
-        add_complete_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("complete",true);
-                getActivity().setResult(RESULT_OK);
-                getActivity().finish();
+                singlePicker();
             }
         });
         return view;
     }
 
-    private void singlePicker(final View view, final String aa) {
+    private void setSelectText(View layoutview, String option1, String option2) {
+        TextView subSelect = layoutview.findViewById(R.id.tv_sub_select);
+        subSelect.setText(option1);
+        TextView subSelectAnswer = layoutview.findViewById(R.id.tv_sub_selected_answer);
+        subSelectAnswer.setText(option2);
+    }
+
+    private void singlePicker(final View view) {
         MyOptionsPickerView<String> singlePicker = new MyOptionsPickerView<String>(getActivity());
         final ArrayList<String> items = new ArrayList<String>();
         items.add("A");
@@ -146,30 +150,13 @@ public class AgriculturalRegisterFragment extends Fragment {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3) {
                 Toast.makeText(getActivity(), "" + items.get(options1), Toast.LENGTH_SHORT).show();
-
-                switch (aa) {
-                    case "whatkind":
-                        Agriculture.getInstance().setWhatKind(items.get(options1));
-                        break;
-                    case "detailkind":
-                        Agriculture.getInstance().setDetailKind(items.get(options1));
-                        break;
-                    case "isCurrent":
-                        Agriculture.getInstance().setCurrentAgriculturing(items.get(options1));
-                        break;
-                    case "unit":
-                        Agriculture.getInstance().setUnit(items.get(options1));
-                        break;
-                    case "howmanyground":
-                        Agriculture.getInstance().setHowmanyArg(items.get(options1));
-                }
                 view.setVisibility(View.VISIBLE);
             }
         });
         singlePicker.show();
     }
 
-    private void singlePicker(final String aa) {
+    private void singlePicker() {
         MyOptionsPickerView<String> singlePicker = new MyOptionsPickerView<String>(getActivity());
         final ArrayList<String> items = new ArrayList<String>();
         items.add("A");
@@ -184,21 +171,6 @@ public class AgriculturalRegisterFragment extends Fragment {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3) {
                 Toast.makeText(getActivity(), "" + items.get(options1), Toast.LENGTH_SHORT).show();
-
-                switch (aa) {
-                    case "whatkind":
-                        Agriculture.getInstance().setWhatKind(items.get(options1));
-                        break;
-                    case "detailkind":
-                        Agriculture.getInstance().setDetailKind(items.get(options1));
-                        break;
-                    case "isCurrent":
-                        Agriculture.getInstance().setCurrentAgriculturing(items.get(options1));
-                        break;
-                    case "unit":
-                        Agriculture.getInstance().setUnit(items.get(options1));
-                        break;
-                }
             }
         });
         singlePicker.show();
@@ -207,6 +179,17 @@ public class AgriculturalRegisterFragment extends Fragment {
     public void onButtonPressed(Uri uri) {
     }
 
+
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof OnFragmentInteractionListener) {
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
+
     @Override
     public void onDetach() {
         super.onDetach();
@@ -214,7 +197,8 @@ public class AgriculturalRegisterFragment extends Fragment {
     }
 
 
-    public interface OnFragmentAddListener {
-        void onbbb(int agriculture);
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 }
