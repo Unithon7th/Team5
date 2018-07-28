@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.unithon7th.unithon_nb.asset.assetRegister">
+    tools:context="com.unithon7th.unithon_nb.asset.AssetRegister">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -31,5 +31,7 @@
 
     <include layout="@layout/component_line" />
 
-    <include layout="@layout/content_asset_nothing" />
+    <include
+        android:id="@+id/content_main"
+        layout="@layout/content_asset_nothing" />
 </LinearLayout>

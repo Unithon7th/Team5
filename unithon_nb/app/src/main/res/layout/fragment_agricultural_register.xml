@@ -7,7 +7,7 @@
     android:background="@color/bg_gray"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.unithon7th.unithon_nb.asset.assetRegister">
+    tools:context="com.unithon7th.unithon_nb.asset.AssetRegister">
 
     <TextView
         android:id="@+id/textView"
@@ -26,28 +26,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <include
             android:id="@+id/select_mini_classification"
-            layout="@layout/component_register" />
+            layout="@layout/item_register" />
 
         <include
             android:id="@+id/farming_kind_name"
-            layout="@layout/component_register" />
+            layout="@layout/item_register" />
 
         <include
             android:id="@+id/current_condition"
-            layout="@layout/component_register" />
+            layout="@layout/item_register" />
 
         <include
             android:id="@+id/current_condition_ground"
-            layout="@layout/component_register" />
+            layout="@layout/item_register" />
 
         <include
             android:id="@+id/current_farming_count"
-            layout="@layout/component_line" />
+            layout="@layout/item_register" />
+
+        <include layout="@layout/component_line" />
 
         <View
             android:layout_width="match_parent"
@@ -56,42 +58,10 @@
 
         <include layout="@layout/component_line" />
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/iv_complete_register_agricultural"
             android:layout_width="match_parent"
-            android:layout_height="255dp"
-            android:orientation="vertical">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:text="@string/complete_text"
-                        android:textColor="@color/text_complete"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <include layout="@layout/component_line" />
-
-        </LinearLayout>
-
-
+            android:layout_height="match_parent"
+            android:src="@drawable/btn_complate" />
     </LinearLayout>
 </LinearLayout>
