@@ -18,7 +18,7 @@
         <activity android:name=".home.HomeActivity">
 
         </activity>
-        <activity android:name=".asset.assetRegister" >
+        <activity android:name=".asset.AssetRegister" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

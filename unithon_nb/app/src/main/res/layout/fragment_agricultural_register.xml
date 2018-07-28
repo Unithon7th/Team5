@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.unithon7th.unithon_nb.asset.AssetRegister">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:lineSpacingExtra="6sp"
+        android:textColor="#fd6675"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="유동자산만 등록이 가능하며\n물가 시세외의 수치는 모두 추정 금액 입니다" />
+
+    <include layout="@layout/component_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/select_mini_classification"
+            layout="@layout/item_register" />
+
+        <include
+            android:id="@+id/farming_kind_name"
+            layout="@layout/item_register" />
+
+        <include
+            android:id="@+id/current_condition"
+            layout="@layout/item_register" />
+
+        <include
+            android:id="@+id/current_condition_ground"
+            layout="@layout/item_register" />
+
+        <include
+            android:id="@+id/current_farming_count"
+            layout="@layout/item_register" />
+
+        <include layout="@layout/component_line" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <include layout="@layout/component_line" />
+
+        <ImageView
+            android:id="@+id/iv_complete_register_agricultural"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/btn_complate" />
+    </LinearLayout>
+</LinearLayout>

@@ -7,7 +7,7 @@
     android:background="@color/bg_gray"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.unithon7th.unithon_nb.asset.assetRegister">
+    tools:context="com.unithon7th.unithon_nb.asset.AssetRegister">
 
     <TextView
         android:id="@+id/textView"
@@ -31,19 +31,19 @@
 
         <include
             android:id="@+id/select_mini_classification"
-            layout="@layout/component_register" />
+            layout="@layout/item_register" />
 
         <include
             android:id="@+id/farming_kind_name"
-            layout="@layout/component_register" />
+            layout="@layout/item_register" />
 
         <include
             android:id="@+id/current_condition"
-            layout="@layout/component_register" />
+            layout="@layout/item_register" />
 
         <include
             android:id="@+id/current_condition_ground"
-            layout="@layout/component_register" />
+            layout="@layout/item_register" />
 
         <include
             android:id="@+id/current_farming_count"
