@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">unithon_nb</string>
     <string name="none">내역이 없습니다\n쉽고 빠른 자산관리\n지금 바로 시작할까요?</string>
+    <string name="title_activity_asset_register">assetRegister</string>
+    <string name="argu_image_subscri">농작물그림</string>
 </resources>
