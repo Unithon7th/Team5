@@ -31,5 +31,7 @@
 
     <include layout="@layout/component_line" />
 
-    <include layout="@layout/content_asset_nothing" />
+    <include
+        android:id="@+id/content_main"
+        layout="@layout/content_asset_nothing" />
 </LinearLayout>
