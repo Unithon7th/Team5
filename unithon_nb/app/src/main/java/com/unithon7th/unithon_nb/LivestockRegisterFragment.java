@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class LivestockRegisterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-//    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener addLiveStockListener;
 
     public LivestockRegisterFragment() {
     }
@@ -50,7 +51,7 @@ public class LivestockRegisterFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_livestock_register, container, false);
-
+        ImageView add_complete_btn = view.findViewById(R.id.iv_complete_register_livestock);
         final View farmingKindNameLayout = view.findViewById(R.id.livestock_00);
 
         TextView subSelect = farmingKindNameLayout.findViewById(R.id.tv_sub_select);
@@ -78,27 +79,34 @@ public class LivestockRegisterFragment extends Fragment {
         farmingKindNameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singlePicker(currentConditionLayout);
+                singlePicker(currentConditionLayout, "whatkind");
             }
         });
 
         currentConditionLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singlePicker(selectCountLayout);
+                singlePicker(selectCountLayout, "detailkind");
             }
         });
 
         selectCountLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singlePicker();
+                singlePicker("unit");
+            }
+        });
+
+        add_complete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addLiveStockListener.onFragmentInteraction(LiveStock.getInstance());
             }
         });
         return view;
     }
 
-    private void singlePicker(final View view) {
+    private void singlePicker(final View view, final String aa) {
         MyOptionsPickerView<String> singlePicker = new MyOptionsPickerView<String>(getActivity());
         final ArrayList<String> items = new ArrayList<String>();
         items.add("A");
@@ -113,13 +121,27 @@ public class LivestockRegisterFragment extends Fragment {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3) {
                 Toast.makeText(getActivity(), "" + items.get(options1), Toast.LENGTH_SHORT).show();
+
+                switch (aa) {
+                    case "whatkind":
+                        LiveStock.getInstance().setWhatKind(items.get(options1));
+                        break;
+                    case "detailkind":
+                        LiveStock.getInstance().setDetailKind(items.get(options1));
+                        break;
+                    case "unit":
+                        LiveStock.getInstance().setCountTotalunit(items.get(options1));
+                        break;
+                }
                 view.setVisibility(View.VISIBLE);
             }
         });
         singlePicker.show();
+
+
     }
 
-    private void singlePicker() {
+    private void singlePicker(String aa) {
         MyOptionsPickerView<String> singlePicker = new MyOptionsPickerView<String>(getActivity());
         final ArrayList<String> items = new ArrayList<String>();
         items.add("A");
@@ -145,17 +167,6 @@ public class LivestockRegisterFragment extends Fragment {
 //        }
     }
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-
     @Override
     public void onDetach() {
         super.onDetach();
@@ -163,6 +174,6 @@ public class LivestockRegisterFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(LiveStock liveStock);
     }
 }
