@@ -53,9 +53,4 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
-//        FragmentManager fm = getSupportFragmentManager();
-//        FragmentTransaction ft = fm.beginTransaction();
-//
-//
-//        ft.commit();
 }
