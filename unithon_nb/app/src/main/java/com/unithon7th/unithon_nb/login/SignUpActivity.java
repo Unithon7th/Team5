@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import android.support.constraint.solver.GoalRow;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,21 +11,18 @@ import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.unithon7th.unithon_nb.AddCookiesInterceptor;
-import com.unithon7th.unithon_nb.ApplicationController;
+
 import com.unithon7th.unithon_nb.GlobalApplication;
 import com.unithon7th.unithon_nb.R;
-import com.unithon7th.unithon_nb.ReceivedCookiesInterceptor;
 import com.unithon7th.unithon_nb.home.HomeActivity;
 
 import java.util.HashMap;
 import java.util.Map;
-import okhttp3.OkHttpClient;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

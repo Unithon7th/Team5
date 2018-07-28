@@ -5,12 +5,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -18,15 +16,12 @@ import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
-import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 import com.unithon7th.unithon_nb.AddCookiesInterceptor;
-import com.unithon7th.unithon_nb.ApplicationController;
 import com.unithon7th.unithon_nb.GlobalApplication;
 import com.unithon7th.unithon_nb.R;
 import com.unithon7th.unithon_nb.ReceivedCookiesInterceptor;
 import com.unithon7th.unithon_nb.home.HomeActivity;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 

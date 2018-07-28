@@ -8,23 +8,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.unithon7th.unithon_nb.AddCookiesInterceptor;
-import com.unithon7th.unithon_nb.ApplicationController;
 import com.unithon7th.unithon_nb.R;
-import com.unithon7th.unithon_nb.ReceivedCookiesInterceptor;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.OkHttpClient;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     ViewPager viewPager;
