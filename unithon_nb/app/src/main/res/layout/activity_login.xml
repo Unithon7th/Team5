@@ -6,29 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".login.LoginActivity">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/login_image">
 
     <com.kakao.usermgmt.LoginButton
         android:id="@+id/btnKT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_above="@+id/btnNB2"
+        android:layout_height="wrap_content"
+        />
 
         <Button
             android:id="@+id/btnNB2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnKT"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:textColor="#ffffff"
-            android:background="#00c73c"
+            android:background="@drawable/button_shape"
+            android:textSize="20dp"
             android:onClick="btnOnClick"
-            android:text="네이버 로그인"/>
+            android:drawableLeft="@drawable/naver_logo"
+            android:padding="15dp"
+            android:text="네이버계정으로 로그인"/>
 
-        
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnNB2"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:onClick="btnOnClick"
+            android:padding="15dp"
+            android:textSize="20dp"
+            android:background="@drawable/btn_signup"
+            android:textColor="#ffffff"
+            android:text="간편 회원가입" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

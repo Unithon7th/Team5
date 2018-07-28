@@ -113,6 +113,8 @@ public class LoginActivity extends Activity {
             case R.id.btnNB2:
                 NAuthLogin.startOauthLoginActivity(LoginActivity.this, mOAuthLoginHandler);
                 break;
+            case R.id.btnSignup:
+                break;
         }
     }
 }
