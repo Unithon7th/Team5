@@ -48,5 +48,15 @@
             android:background="@drawable/btn_signup"
             android:textColor="#ffffff"
             android:text="간편 회원가입" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/btnSignup"
+            android:layout_marginTop="45dp"
+            android:text="이미 회원이신가요?"/>
+        
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
